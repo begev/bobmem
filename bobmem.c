@@ -95,6 +95,7 @@
             chunk_size += PAGE_SIZE;
         }
 
+        /*Request memory from OS using sbrk system call */
         brk_result = sbrk(chunk_size);
 
        /*Failed to add new mem*/
@@ -281,7 +282,10 @@
         }
     }
 
+    /* Helper function for testing */
     void print_memory(void) {
+        printf("Printing allocated memory chunks and blocks:\n\n");
+
         memchunk* current_chunk;
         int chunk_counter;
         memblock* current_block;
